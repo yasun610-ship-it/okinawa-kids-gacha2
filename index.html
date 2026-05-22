@@ -68,7 +68,7 @@
         </header>
 
         <div class="weather-banner">
-            ⛅ <span id="today-date"></span>の天気 <a href="https://weather.yahoo.co.jp/weather/jp/47/9110/47213.html" target="_blank" rel="noopener noreferrer">1時間ごとの予報を見る(うるま市)</a>
+            ⛅ <span id="today-date"></span>の天気 <a href="https://www.google.com/search?q=現在地の天気" target="_blank" rel="noopener noreferrer">現在地の予報を見る</a>
         </div>
 
         <div class="keep-area">
@@ -142,6 +142,10 @@
 
         function createActionLinksHtml(spot) {
             let linksHtml = '';
+
+            // ★追加：目的地の天気をピンポイントで調べるボタン
+            const weatherQuery = encodeURIComponent(spot.city + " " + spot.name + " 天気");
+            linksHtml += `⛅ <a href="https://www.google.com/search?q=${weatherQuery}" target="_blank" rel="noopener noreferrer" class="action-link" style="background-color: #e0f7fa; color: #00838f;">現地の天気</a>`;
             
             if (spot.category === 'おうち') {
                 const searchQuery = encodeURIComponent(spot.name + " 遊び方");
